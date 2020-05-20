@@ -1,4 +1,5 @@
-<h3>@post.title</h3>
-<p>@post.content</p>
+<h3><%= @post.title%></h3>
 
-<%= button_to ("like #{@post.likes}", like_post_path(@post), method::post) %>
+<%= button_to("Like", "/posts/#{@post.id}/like") %>
+
+<%= "Likes: #{@post.likes}"%>
