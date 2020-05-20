@@ -1,2 +1,15 @@
-<h1>Post Form</h1>
-<%= form_for @post do |f| >
+<h4>Post Form</h4>
+<ol>
+<% @post.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+<% end %>
+</ol>
+<%= form_for @post do |f| %>
+    <table>
+    <tr><td><%= f.label "Title" %></td><td><%= f.text_field :title %></td></tr>
+    <tr><td><%= f.label "Content" %></td><td><%= f.text_area :content %></td></tr>
+    <tr><td><%= f.label "Blogger" %></td><td><%= f.collection_select(:blogger_id, Blogger.all, :id, :name) %></td></tr>
+    <tr><td><%= f.label "Destination" %></td><td><%= f.collection_select(:destination_id, Destination.all, :id, :name)%></td></tr>
+    </table>
+    <%= f.submit %>
+<% end %>
